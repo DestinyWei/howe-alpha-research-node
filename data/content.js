@@ -1,8 +1,6 @@
 // Generated from the Notion Alpha archive on 2026-06-15.
 window.RESEARCH_CONTENT = {
   "27355f3086b380dd97edd7327c13d04f": [
-    "最近开始尝试在频道聊下每日 alpha 新币，不过我就不会说得特别细致了。具体的一些数据有看到不错的我会直接贴链接，没有链接的后续我会补充",
-    "---",
     "$AVNT @avantisfi",
     "TGE 流通 18.5%（算上 alpha 的话可能还有额外 2%），其中空投部分有 3.25% 给到质押 18h 的用户（每人boost 35%）",
     "基本面是衍生品协议，拿了 1200w 融资，Pantera 和 Founders Fund 领投，Coinbase 生态基金也投了",
@@ -112,6 +110,7 @@ window.RESEARCH_CONTENT = {
     "团队背景不错，虽是国人团队主导，但 3 个联创基本都是 UCBerkeley 的校友，然后还拉了之前 a16z 的投资人和 Circle 的一个高级副总裁",
     "融资是拿了 228M，投资阵容也不错，a16z，Coinbase Ventures，软银等等。最后一轮是 1.45B 融了 2 亿美金",
     "玩法：先不玩，得去看下这个 CA 是怎么回事。基本面和团队是没啥问题，公链叙事估值空间也有，但代币总量不固定 + 疑似 TGE 了两次",
+    "---",
     "依旧 DYOR 哈",
     "#Alpha新币分析 #Aleo"
   ],
@@ -129,6 +128,7 @@ window.RESEARCH_CONTENT = {
     "够低无脑冲，我觉得 5 亿以下都算低（拍脑袋想的），但看现在这情况很难",
     "如果高开（1B 以上）的话，看看到现货那会能不能有机会接一下",
     "隔壁 Prove alpha 开盘 1.5，隔天 BN 现货上线开盘价是 0.7（看看能不能复刻）",
+    "---",
     "依旧 DYOR 哈",
     "#Alpha新币分析 #Boundless"
   ],
@@ -144,6 +144,7 @@ window.RESEARCH_CONTENT = {
     "有一点值得注意的是，官方搞了个 PoT 机制（交易量证明），锁仓的份额是给到 $oMAIGA，然后需要达到一定的交易量条件后才会按一定比例解锁成 $MAIGA。那么这相当于间接找了些人在刷 MAIGA 的交易量（算是比较会玩的）",
     "玩法：看开盘市值和流通量，基本面是比较普通的，但高控且这个壳价值还行。不过我觉得上限相对来说会比较低，应该在 1 亿附近。低开我会买",
     "https://x.com/EleveResearch/status/1968235685376303254",
+    "---",
     "依旧 DYOR 哈",
     "#Alpha新币分析 #Maiga"
   ],
@@ -241,6 +242,7 @@ window.RESEARCH_CONTENT = {
     "基本面是 Line(Kaia) 和 Sui 链上的大富翁社交游戏，看推特主要受众是日韩，华语地区也有一些",
     "团队和融资背景未知，不过看这风格应该是日本团队",
     "玩法：暂定不玩，先看看明天有没有更新 tokenomics 的具体信息。若高控可考虑下，否则不玩。这个项目上限很低",
+    "---",
     "依旧 DYOR 哈",
     "#Alpha新币分析 #Kyuzo'sFriends"
   ],
@@ -510,8 +512,6 @@ window.RESEARCH_CONTENT = {
     "#Alpha新币分析 #zkVerify #OpenEden"
   ],
   "28655f3086b380fcb79efc3aefc8936c": [
-    "今天比较忙，我先快速说下结论，有时间我再补充细致一点",
-    "---",
     "$TRUTH @GetSwarmed",
     "CA(Sui)：0x0a48f85a3905cfa49a652bdb074d9e9fabad27892d54afaa5c9e0adeb7ac3cdf::swarm_network_token::SWARM_NETWORK_TOKEN",
     "alpha 20:00 开盘，BN 合约 20:30",
@@ -1216,8 +1216,6 @@ window.RESEARCH_CONTENT = {
     "#Alpha新币分析 #Aria"
   ],
   "2a655f3086b380d899b4fd02d55a6d3a": [
-    "拉垮的项目，以后内容会尽量精简，除去比较有看头的我会写多一些",
-    "---",
     "$TIMI @MetaArenaGaming",
     "CA(BSC)：0xaafe1f781bc5e4d240c4b73f6748d76079678fa8",
     "alpha 开盘时间未知，预估 20:00",
@@ -2593,12 +2591,4 @@ window.RESEARCH_CONTENT = {
   ]
 };
 
-window.RESEARCH_CONTENT_REVIEW = {
-  "27355f3086b380dd97edd7327c13d04f": "早期特殊格式待确认 / EARLY REVIEW: 首行不是 $TOKEN",
-  "27355f3086b380d681f1e8ece083bb6f": "早期特殊格式待确认 / EARLY REVIEW: 未发现正文分隔线",
-  "27355f3086b38029b1c4dbbe31aa4938": "早期特殊格式待确认 / EARLY REVIEW: 未发现正文分隔线",
-  "27355f3086b380d484f8c3c81a1b4888": "早期特殊格式待确认 / EARLY REVIEW: 未发现正文分隔线",
-  "27855f3086b38015875fc4d1a21309df": "早期特殊格式待确认 / EARLY REVIEW: 未发现正文分隔线",
-  "28655f3086b380fcb79efc3aefc8936c": "早期特殊格式待确认 / EARLY REVIEW: 首行不是 $TOKEN",
-  "2a655f3086b380d899b4fd02d55a6d3a": "早期特殊格式待确认 / EARLY REVIEW: 首行不是 $TOKEN"
-};
+window.RESEARCH_CONTENT_REVIEW = {};

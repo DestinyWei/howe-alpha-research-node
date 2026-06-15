@@ -248,8 +248,9 @@ function renderResearchContent(item) {
 
   return item.content.map((paragraph, index) => {
     if (paragraph === "---") return "<hr>";
+    const isTokenHeading = /^\$[A-Za-z0-9]+(?:\s|$)/.test(paragraph);
     const classNames = [
-      index === 0 ? "content-lead" : "",
+      isTokenHeading || index === 0 ? "content-lead" : "",
       paragraph.startsWith("CA(") ? "content-ca" : "",
       paragraph.startsWith("玩法：") ? "content-play" : "",
       paragraph.startsWith("#") ? "content-tags" : "",
