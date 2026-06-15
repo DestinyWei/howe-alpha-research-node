@@ -20,17 +20,15 @@
 
   <main>
     <section class="monitor-panel">
-      <div class="system-line">
-        <div><small>SYSTEM OPERATION</small><strong>ALPHA INTELLIGENCE ARCHIVE</strong></div>
-        <div><small>ACTIVE PROTOCOL</small><strong>HOWE_RESEARCH_SYNC_V1</strong></div>
-        <div class="align-right"><small>LOCAL TIME</small><strong id="clock">--:--:--</strong></div>
-      </div>
-
       <div class="hero-grid">
         <div class="metric metric-primary">
           <small>CORE ANALYSIS / TOTAL REPORTS</small>
           <div class="giant-number" id="total-count">113</div>
           <p>从 2025.09 起持续写入</p>
+          <div class="metric-time">
+            <small>LOCAL TIME</small>
+            <strong id="clock">--:--:--</strong>
+          </div>
         </div>
         <div class="metric author-card">
           <small>AUTHOR NODE</small>
@@ -59,7 +57,11 @@
           <div><small>RESEARCH ACTIVITY</small><strong>OPERATION HISTORY // DAILY COMMITS</strong></div>
           <span><i class="level l0"></i> LESS <i class="level l2"></i><i class="level l4"></i> MORE</span>
         </div>
-        <div class="heatmap" id="heatmap"></div>
+        <div class="heatmap-shell">
+          <div class="heatmap" id="heatmap"></div>
+          <div class="heatmap-months" id="heatmap-months"></div>
+          <div class="heatmap-tooltip" id="heatmap-tooltip" role="tooltip"></div>
+        </div>
       </div>
     </section>
 

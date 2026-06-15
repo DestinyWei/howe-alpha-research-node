@@ -12,8 +12,12 @@ document.querySelector("#total-count").textContent = data.length;
 document.querySelector("#last-date").textContent = data[0]?.date.replaceAll("-", ".") || "--";
 const verifiedChainCount = data.filter((item) => item.chainVerified).length;
 const pendingChainCount = data.length - verifiedChainCount;
-document.querySelector("#chain-status").textContent = `${verifiedChainCount} / ${data.length}`;
-document.querySelector("#metadata-note").textContent = `已确认 ${verifiedChainCount} 篇链信息，剩余 ${pendingChainCount} 篇因原始正文没有明确链或 CA 信息而保留为待确认。`;
+const chainStatusEl = document.querySelector("#chain-status");
+chainStatusEl.textContent = `${verifiedChainCount} / ${data.length}`;
+chainStatusEl.classList.toggle("warning", pendingChainCount > 0);
+document.querySelector("#metadata-note").textContent = pendingChainCount
+  ? `已确认 ${verifiedChainCount} 篇链信息，剩余 ${pendingChainCount} 篇因原始正文没有明确链或 CA 信息而保留为待确认。`
+  : `全部 ${verifiedChainCount} 篇分析记录的链信息均已确认。`;
 
 function tickClock() {
   const now = new Date();
@@ -106,19 +110,54 @@ function renderHeatmap() {
     acc[item.date] = (acc[item.date] || 0) + 1;
     return acc;
   }, {});
+  const heatmap = document.querySelector("#heatmap");
+  const monthAxis = document.querySelector("#heatmap-months");
+  const tooltip = document.querySelector("#heatmap-tooltip");
+  const shell = document.querySelector(".heatmap-shell");
   const start = new Date();
   start.setHours(12, 0, 0, 0);
   start.setDate(start.getDate() - 370);
   const cells = [];
+  const months = [];
+  let previousMonth = -1;
+
   for (let i = 0; i < 371; i += 1) {
     const date = new Date(start);
     date.setDate(start.getDate() + i);
     const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
     const count = counts[key] || 0;
     const level = count === 0 ? 0 : count === 1 ? 2 : count === 2 ? 3 : 4;
-    cells.push(`<span class="heat-cell l${level}" title="${key}: ${count} reports"></span>`);
+    const tooltipText = count ? `${key} · 当日上线 ${count} 篇分析` : `${key} · 无分析记录`;
+    cells.push(`<span class="heat-cell l${level}" data-date="${key}" data-count="${count}" aria-label="${tooltipText}" title="${tooltipText}"></span>`);
+
+    if (date.getMonth() !== previousMonth) {
+      months.push(`<span style="grid-column:${Math.floor(i / 7) + 1}">${date.getMonth() + 1}月</span>`);
+      previousMonth = date.getMonth();
+    }
   }
-  document.querySelector("#heatmap").innerHTML = cells.join("");
+  heatmap.innerHTML = cells.join("");
+  monthAxis.innerHTML = months.join("");
+
+  const positionTooltip = (event) => {
+    const shellRect = shell.getBoundingClientRect();
+    const left = Math.min(event.clientX - shellRect.left + 12, shell.clientWidth - tooltip.offsetWidth - 4);
+    const top = Math.max(event.clientY - shellRect.top - tooltip.offsetHeight - 12, 0);
+    tooltip.style.left = `${Math.max(left, 0)}px`;
+    tooltip.style.top = `${top}px`;
+  };
+
+  heatmap.querySelectorAll(".heat-cell").forEach((cell) => {
+    cell.addEventListener("pointerenter", (event) => {
+      const count = Number(cell.dataset.count);
+      tooltip.textContent = count
+        ? `${cell.dataset.date} · 当日上线 ${count} 篇分析`
+        : `${cell.dataset.date} · 无分析记录`;
+      tooltip.classList.add("visible");
+      positionTooltip(event);
+    });
+    cell.addEventListener("pointermove", positionTooltip);
+    cell.addEventListener("pointerleave", () => tooltip.classList.remove("visible"));
+  });
 }
 
 function openDetail(id) {
