@@ -1,5 +1,5 @@
 const data = window.RESEARCH_DATA || [];
-const state = { query: "", chain: "ALL", month: "ALL" };
+const state = { query: "", chain: "ALL", month: "ALL", sort: "desc" };
 
 const recordsEl = document.querySelector("#records");
 const chainListEl = document.querySelector("#chain-list");
@@ -39,12 +39,14 @@ function getFiltered() {
     const chainMatch = state.chain === "ALL" || item.chains.includes(state.chain);
     const monthMatch = state.month === "ALL" || `${item.year}-${String(item.month).padStart(2, "0")}` === state.month;
     return queryMatch && chainMatch && monthMatch;
-  });
+  }).sort((a, b) => state.sort === "desc"
+    ? b.date.localeCompare(a.date) || b.id - a.id
+    : a.date.localeCompare(b.date) || a.id - b.id);
 }
 
 function renderRecords() {
   const filtered = getFiltered();
-  resultCountEl.textContent = `${filtered.length} RECORDS ONLINE`;
+  resultCountEl.textContent = `${filtered.length} 条记录 / RECORDS`;
   recordsEl.innerHTML = filtered.map((item) => `
     <article class="record" data-id="${item.id}" tabindex="0">
       <div class="record-date">${item.date.replaceAll("-", ".")}</div>
@@ -57,7 +59,7 @@ function renderRecords() {
       </div>
       <div class="record-id">#${String(item.id).padStart(3, "0")}</div>
     </article>
-  `).join("") || `<div class="data-note"><strong>NO SIGNAL</strong><p>没有找到符合条件的记录。</p></div>`;
+  `).join("") || `<div class="data-note"><strong>无匹配记录 / NO SIGNAL</strong><p>没有找到符合条件的记录。</p></div>`;
 
   recordsEl.querySelectorAll(".record").forEach((el) => {
     const open = () => openDetail(Number(el.dataset.id));
@@ -71,10 +73,10 @@ function renderChains() {
   const counts = Object.fromEntries(chainNames.map((chain) => [chain, data.filter((item) => item.chains.includes(chain)).length]));
   const max = Math.max(...Object.values(counts));
   chainListEl.innerHTML = `
-    <button class="filter-row ${state.chain === "ALL" ? "active" : ""}" data-chain="ALL"><span>ALL NETWORKS</span><span>${data.length}</span></button>
+    <button class="filter-row ${state.chain === "ALL" ? "active" : ""}" data-chain="ALL"><span>全部链 / ALL NETWORKS</span><span>${data.length}</span></button>
     ${chainNames.map((chain) => `
       <button class="filter-row ${state.chain === chain ? "active" : ""}" data-chain="${chain}">
-        <span>${chain.toUpperCase()}</span><span>${counts[chain]}</span>
+        <span>${chain === "Other" ? "其他 / OTHER" : chain.toUpperCase()}</span><span>${counts[chain]}</span>
       </button>
       <div class="bar"><i style="width:${(counts[chain] / max) * 100}%"></i></div>
     `).join("")}
@@ -92,7 +94,7 @@ function renderMonths() {
     return acc;
   }, {});
   monthListEl.innerHTML = `
-    <button class="month-row ${state.month === "ALL" ? "active" : ""}" data-month="ALL"><span>ALL MONTHS</span><span>${data.length}</span></button>
+    <button class="month-row ${state.month === "ALL" ? "active" : ""}" data-month="ALL"><span>全部月份 / ALL MONTHS</span><span>${data.length}</span></button>
     ${Object.entries(counts).sort(([a], [b]) => b.localeCompare(a)).map(([month, count]) => `
       <button class="month-row ${state.month === month ? "active" : ""}" data-month="${month}">
         <span>${month.replace("-", " / ")}</span><span>${String(count).padStart(2, "0")}</span>
@@ -168,9 +170,9 @@ function openDetail(id) {
   document.querySelector("#dialog-summary").textContent = item.summary;
   document.querySelector("#dialog-meta").innerHTML = [
     item.date,
-    ...item.chains.map((chain) => `CHAIN: ${chain}`),
-    ...item.tokens.map((token) => `TOKEN: $${token}`),
-    item.chainVerified ? "CHAIN VERIFIED" : "CHAIN PENDING",
+    ...item.chains.map((chain) => `链 / CHAIN: ${chain}`),
+    ...item.tokens.map((token) => `代币 / TOKEN: $${token}`),
+    item.chainVerified ? "链信息已确认 / CHAIN VERIFIED" : "链信息待确认 / CHAIN PENDING",
   ].map((value) => `<span>${value}</span>`).join("");
   document.querySelector("#dialog-notion").href = item.notionUrl;
   dialog.showModal();
@@ -193,6 +195,15 @@ document.querySelector("#clear-search").addEventListener("click", () => {
   searchEl.value = "";
   renderAll();
 });
+document.querySelectorAll("[data-sort]").forEach((button) => button.addEventListener("click", () => {
+  state.sort = button.dataset.sort;
+  document.querySelectorAll("[data-sort]").forEach((item) => {
+    const isActive = item.dataset.sort === state.sort;
+    item.classList.toggle("active", isActive);
+    item.setAttribute("aria-pressed", String(isActive));
+  });
+  renderRecords();
+}));
 document.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", (event) => {
   const rect = dialog.getBoundingClientRect();

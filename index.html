@@ -4,58 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Howe Alpha 新币分析历史投研档案">
-  <title>HOWE // ALPHA RESEARCH NODE</title>
+  <title>Howe // Alpha 投研节点</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="index.html">HOWE // ALPHA RESEARCH NODE</a>
+    <a class="brand" href="index.html">Howe // ALPHA 投研节点</a>
     <nav>
-      <a href="#archive">研究档案</a>
-      <a href="admin.html">新增记录</a>
-      <a href="contact.html">合作联系</a>
+      <a href="#archive">研究档案 / ARCHIVE</a>
+      <a href="contact.html">合作联系 / CONTACT</a>
     </nav>
-    <div class="live"><span></span> NODE ONLINE</div>
+    <div class="live"><span></span> 节点在线 / NODE ONLINE</div>
   </header>
 
   <main>
     <section class="monitor-panel">
       <div class="hero-grid">
         <div class="metric metric-primary">
-          <small>CORE ANALYSIS / TOTAL REPORTS</small>
+          <small>核心分析 / TOTAL REPORTS</small>
           <div class="giant-number" id="total-count">113</div>
           <p>从 2025.09 起持续写入</p>
           <div class="metric-time">
-            <small>LOCAL TIME</small>
+            <small>本地时间 / LOCAL TIME</small>
             <strong id="clock">--:--:--</strong>
           </div>
         </div>
         <div class="metric author-card">
-          <small>AUTHOR NODE</small>
-          <h1>HOWE</h1>
+          <small>作者节点 / AUTHOR NODE</small>
+          <h1>Howe</h1>
           <p>Alpha 新币分析与链上研究</p>
           <div class="author-links">
             <a href="https://x.com/0xcryptoHowe" target="_blank" rel="noreferrer">X / @0xcryptoHowe</a>
-            <a href="https://t.me/cryptohowe_treasure" target="_blank" rel="noreferrer">TG / CHANNEL</a>
-            <a href="https://t.me/cyrptohowe_discussion" target="_blank" rel="noreferrer">TG / DISCUSSION</a>
+            <a href="https://t.me/cryptohowe_treasure" target="_blank" rel="noreferrer">TG / 频道 CHANNEL</a>
+            <a href="https://t.me/cyrptohowe_discussion" target="_blank" rel="noreferrer">TG / 群组 DISCUSSION</a>
           </div>
         </div>
         <div class="metric traffic-card">
-          <small>VISITOR SIGNAL / LOCAL COUNTER</small>
+          <small>访问数据 / VISITOR COUNTER</small>
           <div class="signal">
             <strong id="visits">000001</strong>
-            <span>SESSION PINGS</span>
+            <span>访问次数 / SESSION PINGS</span>
           </div>
-          <div class="status-row"><span>ARCHIVE STATUS</span><b>SYNCED</b></div>
-          <div class="status-row"><span>LAST RESEARCH</span><b id="last-date">2026.06.12</b></div>
-          <div class="status-row"><span>CHAIN METADATA</span><b class="warning" id="chain-status">-- / --</b></div>
+          <div class="status-row"><span>档案状态 / ARCHIVE STATUS</span><b>已同步 / SYNCED</b></div>
+          <div class="status-row"><span>最近研究 / LAST RESEARCH</span><b id="last-date">2026.06.12</b></div>
+          <div class="status-row"><span>链信息 / CHAIN METADATA</span><b class="warning" id="chain-status">-- / --</b></div>
         </div>
       </div>
 
       <div class="activity-wrap">
         <div class="section-heading">
-          <div><small>RESEARCH ACTIVITY</small><strong>OPERATION HISTORY // DAILY COMMITS</strong></div>
-          <span><i class="level l0"></i> LESS <i class="level l2"></i><i class="level l4"></i> MORE</span>
+          <div><small>研究活跃度 / RESEARCH ACTIVITY</small><strong>每日上线记录 / DAILY ACTIVITY</strong></div>
+          <span><i class="level l0"></i> 少 / LESS <i class="level l2"></i><i class="level l4"></i> 多 / MORE</span>
         </div>
         <div class="heatmap-shell">
           <div class="heatmap" id="heatmap"></div>
@@ -66,37 +65,40 @@
     </section>
 
     <section class="search-console">
-      <label for="search">QUERY TERMINAL</label>
+      <label for="search">搜索终端 / QUERY</label>
       <input id="search" type="search" placeholder="搜索代币名称，例如 VEERA / $ESP / 合约名称...">
-      <button id="clear-search" type="button">CLEAR</button>
-      <div id="result-count">113 RECORDS ONLINE</div>
+      <button id="clear-search" type="button">清除 / CLEAR</button>
+      <div id="result-count">113 条记录 / RECORDS</div>
     </section>
 
     <section class="archive-grid" id="archive">
       <section class="archive-column records-column">
         <div class="column-title">
-          <div><small>ACTIVE PROCESSES</small><h2>全部分析记录</h2></div>
-          <span>LATEST → OLDEST</span>
+          <div><small>分析记录 / RESEARCH RECORDS</small><h2>全部分析记录</h2></div>
+          <div class="sort-controls" aria-label="分析记录排序">
+            <button class="active" type="button" data-sort="desc" aria-pressed="true">新 → 旧 / LATEST</button>
+            <button type="button" data-sort="asc" aria-pressed="false">旧 → 新 / OLDEST</button>
+          </div>
         </div>
         <div class="records" id="records"></div>
       </section>
 
       <aside class="archive-column">
         <div class="column-title">
-          <div><small>NETWORK TOPOLOGY</small><h2>链分类统计</h2></div>
-          <span>FILTER</span>
+          <div><small>链分布 / NETWORK</small><h2>链分类统计</h2></div>
+          <span>筛选 / FILTER</span>
         </div>
         <div class="chain-list" id="chain-list"></div>
         <div class="data-note">
-          <strong>METADATA NOTICE</strong>
+          <strong>链信息说明 / METADATA</strong>
           <p id="metadata-note">正在读取链信息完成度...</p>
         </div>
       </aside>
 
       <aside class="archive-column">
         <div class="column-title">
-          <div><small>LOAD VOLUMETRICS</small><h2>每月上线情况</h2></div>
-          <span>ARCHIVE</span>
+          <div><small>上线统计 / MONTHLY ACTIVITY</small><h2>每月上线情况</h2></div>
+          <span>档案 / ARCHIVE</span>
         </div>
         <div class="month-list" id="month-list"></div>
       </aside>
@@ -105,19 +107,19 @@
 
   <dialog id="detail-dialog">
     <button class="dialog-close" aria-label="关闭">×</button>
-    <small>RESEARCH RECORD // <span id="dialog-id"></span></small>
+    <small>研究记录 / RESEARCH RECORD // <span id="dialog-id"></span></small>
     <h2 id="dialog-title"></h2>
     <div class="detail-meta" id="dialog-meta"></div>
     <p id="dialog-summary"></p>
     <div class="detail-actions">
-      <a id="dialog-notion" target="_blank" rel="noreferrer">OPEN ORIGINAL NOTION RECORD ↗</a>
-      <a href="contact.html">CONTACT AUTHOR ↗</a>
+      <a id="dialog-notion" target="_blank" rel="noreferrer">打开 Notion 原文 / OPEN ORIGINAL ↗</a>
+      <a href="contact.html">联系作者 / CONTACT ↗</a>
     </div>
   </dialog>
 
   <footer>
-    <span>HOWE RESEARCH NODE // DYOR</span>
-    <span>DATA SOURCE: NOTION ARCHIVE</span>
+    <span>Howe 投研节点 / RESEARCH NODE // DYOR</span>
+    <span>数据来源 / DATA SOURCE: NOTION ARCHIVE</span>
   </footer>
 
   <script src="data/research.js"></script>

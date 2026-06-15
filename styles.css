@@ -179,6 +179,17 @@ small {
 .column-title { display: flex; justify-content: space-between; align-items: end; padding-bottom: 12px; border-bottom: 1px solid #222; }
 .column-title h2 { font-size: 14px; margin: 0; }
 .column-title span { color: #777; font-size: 8px; }
+.sort-controls { display: flex; gap: 5px; }
+.sort-controls button {
+  padding: 6px 7px;
+  border: 1px solid #aaa;
+  color: #777;
+  background: transparent;
+  cursor: pointer;
+  font-size: 7px;
+  letter-spacing: .04em;
+}
+.sort-controls button:hover, .sort-controls button.active { color: white; background: #111; border-color: #111; }
 
 .records { margin-top: 8px; max-height: 720px; overflow: auto; scrollbar-color: #111 transparent; }
 .record {
@@ -276,6 +287,8 @@ footer {
   .search-console label, .search-console div { grid-column: 1 / -1; }
   .archive-grid { grid-template-columns: 1fr; }
   .archive-column { border-right: 0; border-bottom: 1px solid #bbb; padding: 20px 14px 35px; }
+  .records-column .column-title { align-items: start; gap: 12px; }
+  .sort-controls { flex-direction: column; }
   .record { grid-template-columns: 62px 1fr; }
   .record-id { display: none; }
 }
