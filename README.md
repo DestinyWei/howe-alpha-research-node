@@ -30,13 +30,13 @@ python3 -m http.server 8787
 [2026, "6.15 $TOKEN", "NOTION_PAGE_ID"],
 ```
 
-3. 如已确认所属链，在 `CHAIN_OVERRIDES` 中补充：
+3. 如已确认所属链，在 `PAGE_CHAIN_OVERRIDES` 中补充：
 
 ```js
 TOKEN: ["BSC", "Base"],
 ```
 
-4. 在 `FEATURED_NOTES` 中录入摘要；在 `PAGE_CONTENT_OVERRIDES` 中按 Notion 页面 ID 录入完整正文。除少数早期异形调研需要单独确认外，正文统一按当前 `$VEERA` 格式整理：首行为 `$TOKEN @handle`，第二行为 CA，多段研究正文，`"---"` 分隔线，最后保留 DYOR 与话题标签。
+4. 在 `FEATURED_NOTES` 中录入摘要；在 `data/content.js` 的 `window.RESEARCH_CONTENT` 中按 Notion 页面 ID 录入完整正文。除少数早期异形调研需要单独确认外，正文统一按当前 `$VEERA` 格式整理：首行为 `$TOKEN @handle`，第二行为 CA，多段研究正文，`"---"` 分隔线，最后保留 DYOR 与话题标签。
 
 ```js
 "NOTION_PAGE_ID": [

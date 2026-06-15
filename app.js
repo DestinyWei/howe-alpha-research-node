@@ -213,7 +213,8 @@ function openDetail(id) {
     { type: "token", value: `代币 / TOKEN: ${item.tokens.map((token) => `$${token}`).join(" / ")}` },
     { type: "status", value: item.chainVerified ? "链信息已确认 / CHAIN VERIFIED" : "链信息待确认 / CHAIN PENDING" },
     { type: "content", value: item.content.length ? "完整正文 / FULL TEXT" : "正文待整理 / FULL TEXT PENDING" },
-  ].map((meta) => `<span class="meta-${meta.type}">${meta.value}</span>`).join("");
+    item.contentReview ? { type: "review", value: item.contentReview } : null,
+  ].filter(Boolean).map((meta) => `<span class="meta-${meta.type}">${meta.value}</span>`).join("");
   document.querySelector("#dialog-content").innerHTML = renderResearchContent(item);
   document.querySelector("#dialog-notion").href = item.notionUrl;
   dialog.showModal();
