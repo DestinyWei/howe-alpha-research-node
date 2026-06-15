@@ -3,6 +3,7 @@ const state = { query: "", chain: "ALL", month: "ALL", date: "", sort: "desc" };
 
 const recordsEl = document.querySelector("#records");
 const archiveEl = document.querySelector("#archive");
+const searchConsoleEl = document.querySelector(".search-console");
 const chainListEl = document.querySelector("#chain-list");
 const monthListEl = document.querySelector("#month-list");
 const resultCountEl = document.querySelector("#result-count");
@@ -48,6 +49,7 @@ function getFiltered() {
 
 function renderRecords() {
   const filtered = getFiltered();
+  searchConsoleEl.classList.toggle("date-filter-active", Boolean(state.date));
   resultCountEl.textContent = state.date
     ? `${state.date.replaceAll("-", ".")} · ${filtered.length} 条记录 / RECORDS`
     : `${filtered.length} 条记录 / RECORDS`;
@@ -88,6 +90,7 @@ function renderChains() {
   chainListEl.querySelectorAll("[data-chain]").forEach((button) => button.addEventListener("click", () => {
     state.chain = button.dataset.chain;
     state.date = "";
+    searchEl.value = state.query;
     renderAll();
   }));
 }
@@ -109,6 +112,7 @@ function renderMonths() {
   monthListEl.querySelectorAll("[data-month]").forEach((button) => button.addEventListener("click", () => {
     state.month = button.dataset.month;
     state.date = "";
+    searchEl.value = state.query;
     renderAll();
   }));
 }
@@ -184,13 +188,18 @@ function jumpToDate(date) {
   state.query = "";
   state.chain = "ALL";
   state.month = "ALL";
-  searchEl.value = "";
+  searchEl.value = getDateTokenLabel(recordsForDate);
   renderAll();
 
   requestAnimationFrame(() => {
     archiveEl.scrollIntoView({ behavior: "smooth", block: "start" });
     recordsEl.querySelector(`[data-date="${date}"]`)?.focus({ preventScroll: true });
   });
+}
+
+function getDateTokenLabel(records) {
+  const tokens = [...new Set(records.flatMap((item) => item.tokens.map((token) => `$${token}`)))];
+  return tokens.length ? tokens.join(" / ") : records.map((item) => item.title).join(" / ");
 }
 
 function openDetail(id) {

@@ -36,7 +36,7 @@ python3 -m http.server 8787
 TOKEN: ["BSC", "Base"],
 ```
 
-4. 在 `FEATURED_NOTES` 中录入摘要；在 `PAGE_CONTENT_OVERRIDES` 中按 Notion 页面 ID 录入完整正文。正文使用段落数组，`"---"` 会显示为分隔线：
+4. 在 `FEATURED_NOTES` 中录入摘要；在 `PAGE_CONTENT_OVERRIDES` 中按 Notion 页面 ID 录入完整正文。除少数早期异形调研需要单独确认外，正文统一按当前 `$VEERA` 格式整理：首行为 `$TOKEN @handle`，第二行为 CA，多段研究正文，`"---"` 分隔线，最后保留 DYOR 与话题标签。
 
 ```js
 "NOTION_PAGE_ID": [
