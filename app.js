@@ -10,6 +10,10 @@ const dialog = document.querySelector("#detail-dialog");
 
 document.querySelector("#total-count").textContent = data.length;
 document.querySelector("#last-date").textContent = data[0]?.date.replaceAll("-", ".") || "--";
+const verifiedChainCount = data.filter((item) => item.chainVerified).length;
+const pendingChainCount = data.length - verifiedChainCount;
+document.querySelector("#chain-status").textContent = `${verifiedChainCount} / ${data.length}`;
+document.querySelector("#metadata-note").textContent = `已确认 ${verifiedChainCount} 篇链信息，剩余 ${pendingChainCount} 篇因原始正文没有明确链或 CA 信息而保留为待确认。`;
 
 function tickClock() {
   const now = new Date();
