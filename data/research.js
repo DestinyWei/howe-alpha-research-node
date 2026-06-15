@@ -245,6 +245,25 @@ const FEATURED_NOTES = {
   },
 };
 
+const PAGE_CONTENT_OVERRIDES = {
+  "37d55f3086b38038a4d3f832504732e0": [
+    "$VEERA @On_Veera",
+    "CA(BSC/Base)：0x6e398a93eAcc13CBCb3e9a7c7a0B73821220E532",
+    "alpha 开盘时间未知，空投领取时间未知",
+    "代币初始总量 1B，初始流通 14.46%（流通数据来源 CMC）",
+    "没有公布 tokenomics，只知道有 0.04% 用于公售（价格 0.04，4000w FDV 融 50w）",
+    "基本面是做链上数字银行的，包括存款、生息、借贷、消费等",
+    "主要是印度团队，团队整体都是比较工程和传统金融相关的背景，没有太多 Crypto Native 背景",
+    "3 轮融资拿了 1600w 美金。1 轮 24 年拿了 600w 美金，6MV 和 Folius Ventures 等投资；1 轮拿了 400w 美金，其中 $2.8M 来自 CMCC Titan Fund 与 Sigma Capital，其他为战略天使投资人；1 轮拿了 1000w 美金，6MV 和 Ayon Capital 等投资",
+    "目前还没有池子价，盘前主要成交价在 0.1 附近，成交量一般参考价值较低",
+    "玩法：项目所处叙事赛道还不错，跟我在的项目是同赛道的。投资背景一般般，基本上就 6MV 还能看。拿了这么多钱，有合约和大所的可能性但很低，需要看团队和投资人的资源背景情况",
+    "没有 tokenomics，风险很大。开盘有待观察，预期不要放太高",
+    "---",
+    "依旧 DYOR 哈",
+    "#Alpha新币分析 #Veera",
+  ],
+};
+
 function toRecord([year, title, notionId], index) {
   const dateMatch = title.match(/^(\d{1,2})\.(\d{1,2})/);
   const month = Number(dateMatch[1]);
@@ -267,6 +286,7 @@ function toRecord([year, title, notionId], index) {
     chains: chains.length ? chains : ["Other"],
     chainVerified: chains.length > 0,
     summary: featured.summary || "完整原始研究记录已归档于 Notion。链与结构化指标等待后续校对。",
+    content: PAGE_CONTENT_OVERRIDES[notionId] || [],
     notionUrl: `https://dune-marten-78b.notion.site/${notionId}`,
   };
 }

@@ -34,7 +34,7 @@ document.querySelector("#visits").textContent = String(visits).padStart(6, "0");
 function getFiltered() {
   const query = state.query.trim().replace(/^\$/, "").toLowerCase();
   return data.filter((item) => {
-    const haystack = `${item.title} ${item.project} ${item.tokens.join(" ")} ${item.summary}`.toLowerCase();
+    const haystack = `${item.title} ${item.project} ${item.tokens.join(" ")} ${item.summary} ${item.content.join(" ")}`.toLowerCase();
     const queryMatch = !query || haystack.includes(query);
     const chainMatch = state.chain === "ALL" || item.chains.includes(state.chain);
     const monthMatch = state.month === "ALL" || `${item.year}-${String(item.month).padStart(2, "0")}` === state.month;
@@ -167,15 +167,50 @@ function openDetail(id) {
   if (!item) return;
   document.querySelector("#dialog-id").textContent = String(item.id).padStart(3, "0");
   document.querySelector("#dialog-title").textContent = item.title;
-  document.querySelector("#dialog-summary").textContent = item.summary;
   document.querySelector("#dialog-meta").innerHTML = [
     item.date,
     ...item.chains.map((chain) => `链 / CHAIN: ${chain}`),
     ...item.tokens.map((token) => `代币 / TOKEN: $${token}`),
     item.chainVerified ? "链信息已确认 / CHAIN VERIFIED" : "链信息待确认 / CHAIN PENDING",
+    item.content.length ? "完整正文 / FULL TEXT" : "正文待整理 / FULL TEXT PENDING",
   ].map((value) => `<span>${value}</span>`).join("");
+  document.querySelector("#dialog-content").innerHTML = renderResearchContent(item);
   document.querySelector("#dialog-notion").href = item.notionUrl;
   dialog.showModal();
+  dialog.scrollTop = 0;
+}
+
+function escapeHtml(value) {
+  return value.replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+  })[character]);
+}
+
+function renderResearchContent(item) {
+  if (!item.content.length) {
+    return `
+      <div class="content-pending">
+        <strong>正文待整理 / FULL TEXT PENDING</strong>
+        <p>${escapeHtml(item.summary)}</p>
+        <p>完整研究正文尚未迁入站内，后续将逐篇整理补充。</p>
+      </div>
+    `;
+  }
+
+  return item.content.map((paragraph, index) => {
+    if (paragraph === "---") return "<hr>";
+    const classNames = [
+      index === 0 ? "content-lead" : "",
+      paragraph.startsWith("CA(") ? "content-ca" : "",
+      paragraph.startsWith("玩法：") ? "content-play" : "",
+      paragraph.startsWith("#") ? "content-tags" : "",
+    ].filter(Boolean).join(" ");
+    return `<p class="${classNames}">${escapeHtml(paragraph)}</p>`;
+  }).join("");
 }
 
 function renderAll() {

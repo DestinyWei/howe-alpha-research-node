@@ -36,7 +36,20 @@ python3 -m http.server 8787
 TOKEN: ["BSC", "Base"],
 ```
 
-4. 提交到 GitHub。Commit 历史即网站的操作历史。
+4. 在 `FEATURED_NOTES` 中录入摘要；在 `PAGE_CONTENT_OVERRIDES` 中按 Notion 页面 ID 录入完整正文。正文使用段落数组，`"---"` 会显示为分隔线：
+
+```js
+"NOTION_PAGE_ID": [
+  "$TOKEN @project",
+  "CA(BSC)：0x...",
+  "研究正文第一段",
+  "---",
+  "依旧 DYOR 哈",
+  "#Alpha新币分析 #TOKEN",
+],
+```
+
+5. 提交到 GitHub。Commit 历史即网站的操作历史。
 
 ## Notion 图片
 

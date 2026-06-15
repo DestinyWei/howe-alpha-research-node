@@ -232,22 +232,42 @@ small {
 .data-note p { color: #777; margin-bottom: 0; }
 
 dialog {
-  width: min(680px, calc(100vw - 24px));
+  width: min(920px, calc(100vw - 24px));
+  max-height: min(88vh, 960px);
+  overflow-y: auto;
   border: 1px solid #444;
   background: #111;
   color: #eee;
-  padding: 34px;
+  padding: 40px 44px;
   box-shadow: 14px 14px 0 rgba(0,0,0,.5);
+  scrollbar-color: #777 #111;
 }
 dialog::backdrop { background: rgba(0,0,0,.78); backdrop-filter: blur(3px); }
-.dialog-close { position: absolute; right: 16px; top: 12px; border: 0; background: transparent; color: #aaa; font-size: 25px; cursor: pointer; }
-dialog h2 { font-size: 34px; margin: 22px 0; letter-spacing: -.05em; }
-dialog p { color: #aaa; line-height: 1.9; font-size: 12px; }
+.dialog-close { position: sticky; float: right; right: 0; top: 0; z-index: 2; border: 0; background: #111; color: #aaa; font-size: 25px; cursor: pointer; }
+dialog h2 { font-size: clamp(30px, 5vw, 48px); margin: 22px 0; letter-spacing: -.05em; }
 .detail-meta { display: flex; flex-wrap: wrap; gap: 7px; }
 .detail-meta span { border: 1px solid #555; padding: 6px 8px; font-size: 9px; color: #bbb; }
+.detail-content { margin-top: 30px; padding-top: 8px; border-top: 1px solid #292929; }
+.detail-content p { max-width: 76ch; margin: 20px 0; color: #c1c1c1; line-height: 2; font-size: 13px; }
+.detail-content .content-lead { color: white; font-size: 20px; font-weight: 700; letter-spacing: .02em; }
+.detail-content .content-ca {
+  overflow-wrap: anywhere;
+  padding: 13px 14px;
+  border: 1px solid #4b4b4b;
+  color: var(--signal);
+  background: #080808;
+  font-size: 11px;
+}
+.detail-content .content-play { padding-left: 15px; border-left: 3px solid var(--signal); color: #eee; }
+.detail-content .content-tags { color: var(--signal); letter-spacing: .04em; }
+.detail-content hr { height: 1px; margin: 32px 0; border: 0; background: #555; }
+.content-pending { margin-top: 14px; padding: 20px; border: 1px solid #555; }
+.content-pending strong { color: white; font-size: 10px; letter-spacing: .08em; }
+.content-pending p { margin: 13px 0 0; color: #999; }
 .detail-actions { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
 .detail-actions a { border: 1px solid #666; padding: 12px 14px; font-size: 9px; letter-spacing: .08em; }
 .detail-actions a:hover { background: white; color: black; }
+.detail-actions .source-link { color: #888; border-color: #444; }
 
 footer {
   max-width: 1500px;
@@ -291,4 +311,7 @@ footer {
   .sort-controls { flex-direction: column; }
   .record { grid-template-columns: 62px 1fr; }
   .record-id { display: none; }
+  dialog { max-height: 92vh; padding: 28px 20px; }
+  .detail-content p { font-size: 12px; line-height: 1.85; }
+  .detail-content .content-lead { font-size: 17px; }
 }
