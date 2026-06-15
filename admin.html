@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OWNER CONSOLE // HOWE</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">HOWE // ALPHA RESEARCH NODE</a>
+    <nav><a href="index.html">返回档案</a><a href="contact.html">合作联系</a></nav>
+    <div class="live"><span></span> OWNER WORKFLOW</div>
+  </header>
+  <main class="terminal-page">
+    <section class="terminal-card">
+      <small>OWNER CONSOLE // CONTENT OPERATIONS</small>
+      <h1>新增研究记录</h1>
+      <p>当前首版以 GitHub 作为唯一可信内容源。这样每次新增都会留下 Commit 历史，也不会在纯静态网页中暴露不安全的管理员密码。</p>
+      <a class="terminal-button" href="https://github.com/new" target="_blank" rel="noreferrer">OPEN GITHUB ↗</a>
+      <a class="terminal-button" href="README.md">查看新增说明</a>
+    </section>
+    <section class="terminal-card">
+      <small>SECURITY ARCHITECTURE</small>
+      <h2>网页内新增如何做到只有你能操作</h2>
+      <ol>
+        <li>部署时接入 GitHub OAuth，仅允许 Howe 的 GitHub 用户 ID。</li>
+        <li>后台表单提交后，由服务端创建或更新 <code>data/research.js</code>。</li>
+        <li>GitHub Commit 触发网站自动重新部署。</li>
+      </ol>
+      <p>纯静态页面无法安全保存管理员密码，因此本地首版没有伪造一个看似安全、实际可被绕过的登录框。</p>
+    </section>
+    <section class="terminal-card">
+      <small>IMAGE OPERATIONS</small>
+      <h2>Notion 图片迁移</h2>
+      <p>把手动下载的图片放入 <code>assets/research-images/</code>。建议文件名使用 <code>日期-代币-序号.webp</code>，例如 <code>2026-06-12-veera-01.webp</code>。</p>
+    </section>
+  </main>
+</body>
+</html>
