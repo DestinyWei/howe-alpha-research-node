@@ -1,7 +1,8 @@
 const data = window.RESEARCH_DATA || [];
-const state = { query: "", chain: "ALL", month: "ALL", sort: "desc" };
+const state = { query: "", chain: "ALL", month: "ALL", date: "", sort: "desc" };
 
 const recordsEl = document.querySelector("#records");
+const archiveEl = document.querySelector("#archive");
 const chainListEl = document.querySelector("#chain-list");
 const monthListEl = document.querySelector("#month-list");
 const resultCountEl = document.querySelector("#result-count");
@@ -38,7 +39,8 @@ function getFiltered() {
     const queryMatch = !query || haystack.includes(query);
     const chainMatch = state.chain === "ALL" || item.chains.includes(state.chain);
     const monthMatch = state.month === "ALL" || `${item.year}-${String(item.month).padStart(2, "0")}` === state.month;
-    return queryMatch && chainMatch && monthMatch;
+    const dateMatch = !state.date || item.date === state.date;
+    return queryMatch && chainMatch && monthMatch && dateMatch;
   }).sort((a, b) => state.sort === "desc"
     ? b.date.localeCompare(a.date) || b.id - a.id
     : a.date.localeCompare(b.date) || a.id - b.id);
@@ -46,9 +48,11 @@ function getFiltered() {
 
 function renderRecords() {
   const filtered = getFiltered();
-  resultCountEl.textContent = `${filtered.length} 条记录 / RECORDS`;
+  resultCountEl.textContent = state.date
+    ? `${state.date.replaceAll("-", ".")} · ${filtered.length} 条记录 / RECORDS`
+    : `${filtered.length} 条记录 / RECORDS`;
   recordsEl.innerHTML = filtered.map((item) => `
-    <article class="record" data-id="${item.id}" tabindex="0">
+    <article class="record ${item.date === state.date ? "date-selected" : ""}" data-id="${item.id}" data-date="${item.date}" tabindex="0">
       <div class="record-date">${item.date.replaceAll("-", ".")}</div>
       <div>
         <h3>${item.title}</h3>
@@ -83,6 +87,7 @@ function renderChains() {
   `;
   chainListEl.querySelectorAll("[data-chain]").forEach((button) => button.addEventListener("click", () => {
     state.chain = button.dataset.chain;
+    state.date = "";
     renderAll();
   }));
 }
@@ -103,6 +108,7 @@ function renderMonths() {
   `;
   monthListEl.querySelectorAll("[data-month]").forEach((button) => button.addEventListener("click", () => {
     state.month = button.dataset.month;
+    state.date = "";
     renderAll();
   }));
 }
@@ -130,7 +136,8 @@ function renderHeatmap() {
     const count = counts[key] || 0;
     const level = count === 0 ? 0 : count === 1 ? 2 : count === 2 ? 3 : 4;
     const tooltipText = count ? `${key} · 当日上线 ${count} 篇分析` : `${key} · 无分析记录`;
-    cells.push(`<span class="heat-cell l${level}" data-date="${key}" data-count="${count}" aria-label="${tooltipText}" title="${tooltipText}"></span>`);
+    const interactiveAttrs = count ? ` role="button" tabindex="0"` : "";
+    cells.push(`<span class="heat-cell l${level}" data-date="${key}" data-count="${count}" aria-label="${tooltipText}" title="${tooltipText}"${interactiveAttrs}></span>`);
 
     if (date.getMonth() !== previousMonth) {
       months.push(`<span style="grid-column:${Math.floor(i / 7) + 1}">${date.getMonth() + 1}月</span>`);
@@ -159,6 +166,30 @@ function renderHeatmap() {
     });
     cell.addEventListener("pointermove", positionTooltip);
     cell.addEventListener("pointerleave", () => tooltip.classList.remove("visible"));
+    cell.addEventListener("click", () => jumpToDate(cell.dataset.date));
+    cell.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        jumpToDate(cell.dataset.date);
+      }
+    });
+  });
+}
+
+function jumpToDate(date) {
+  const recordsForDate = data.filter((item) => item.date === date);
+  if (!recordsForDate.length) return;
+
+  state.date = date;
+  state.query = "";
+  state.chain = "ALL";
+  state.month = "ALL";
+  searchEl.value = "";
+  renderAll();
+
+  requestAnimationFrame(() => {
+    archiveEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    recordsEl.querySelector(`[data-date="${date}"]`)?.focus({ preventScroll: true });
   });
 }
 
@@ -168,12 +199,12 @@ function openDetail(id) {
   document.querySelector("#dialog-id").textContent = String(item.id).padStart(3, "0");
   document.querySelector("#dialog-title").textContent = item.title;
   document.querySelector("#dialog-meta").innerHTML = [
-    item.date,
-    ...item.chains.map((chain) => `链 / CHAIN: ${chain}`),
-    ...item.tokens.map((token) => `代币 / TOKEN: $${token}`),
-    item.chainVerified ? "链信息已确认 / CHAIN VERIFIED" : "链信息待确认 / CHAIN PENDING",
-    item.content.length ? "完整正文 / FULL TEXT" : "正文待整理 / FULL TEXT PENDING",
-  ].map((value) => `<span>${value}</span>`).join("");
+    { type: "date", value: item.date },
+    { type: "chain", value: `链 / CHAIN: ${item.chains.join("/")}` },
+    { type: "token", value: `代币 / TOKEN: ${item.tokens.map((token) => `$${token}`).join(" / ")}` },
+    { type: "status", value: item.chainVerified ? "链信息已确认 / CHAIN VERIFIED" : "链信息待确认 / CHAIN PENDING" },
+    { type: "content", value: item.content.length ? "完整正文 / FULL TEXT" : "正文待整理 / FULL TEXT PENDING" },
+  ].map((meta) => `<span class="meta-${meta.type}">${meta.value}</span>`).join("");
   document.querySelector("#dialog-content").innerHTML = renderResearchContent(item);
   document.querySelector("#dialog-notion").href = item.notionUrl;
   dialog.showModal();
@@ -188,6 +219,10 @@ function escapeHtml(value) {
     '"': "&quot;",
     "'": "&#039;",
   })[character]);
+}
+
+function renderInlineLinks(value) {
+  return escapeHtml(value).replace(/@([A-Za-z0-9_]+)/g, '<a class="content-handle" href="https://x.com/$1" target="_blank" rel="noreferrer">@$1</a>');
 }
 
 function renderResearchContent(item) {
@@ -209,7 +244,7 @@ function renderResearchContent(item) {
       paragraph.startsWith("玩法：") ? "content-play" : "",
       paragraph.startsWith("#") ? "content-tags" : "",
     ].filter(Boolean).join(" ");
-    return `<p class="${classNames}">${escapeHtml(paragraph)}</p>`;
+    return `<p class="${classNames}">${renderInlineLinks(paragraph)}</p>`;
   }).join("");
 }
 
@@ -221,12 +256,14 @@ function renderAll() {
 
 searchEl.addEventListener("input", (event) => {
   state.query = event.target.value;
+  state.date = "";
   renderRecords();
 });
 document.querySelector("#clear-search").addEventListener("click", () => {
   state.query = "";
   state.chain = "ALL";
   state.month = "ALL";
+  state.date = "";
   searchEl.value = "";
   renderAll();
 });
