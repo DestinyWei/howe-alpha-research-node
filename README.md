@@ -21,6 +21,24 @@ python3 -m http.server 8787
 - Output Directory：留空
 - Install Command：留空
 
+### 全站访问计数
+
+首页「访问数据」通过 `/api/visits` 写入 Vercel/Upstash KV，统计所有访客的全站累计访问次数，而不是单个浏览器的本地计数。
+
+在 Vercel 项目中连接 KV 后，需要有以下环境变量：
+
+```text
+KV_REST_API_URL
+KV_REST_API_TOKEN
+```
+
+如果使用 Upstash Redis，也兼容：
+
+```text
+UPSTASH_REDIS_REST_URL
+UPSTASH_REDIS_REST_TOKEN
+```
+
 ## 新增记录
 
 1. 打开 `data/research.js`。

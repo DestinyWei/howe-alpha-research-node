@@ -28,10 +28,30 @@ function tickClock() {
 tickClock();
 setInterval(tickClock, 1000);
 
-const visitKey = "howe-alpha-node-visits";
-const visits = Number(localStorage.getItem(visitKey) || 0) + 1;
-localStorage.setItem(visitKey, String(visits));
-document.querySelector("#visits").textContent = String(visits).padStart(6, "0");
+async function syncGlobalVisits() {
+  const visitsEl = document.querySelector("#visits");
+  visitsEl.textContent = "------";
+  visitsEl.title = "正在同步全站访问数据";
+
+  try {
+    const response = await fetch("/api/visits", {
+      method: "POST",
+      headers: { Accept: "application/json" },
+    });
+    const result = await response.json();
+
+    if (!response.ok || typeof result.count !== "number") {
+      throw new Error(result.error || "counter_unavailable");
+    }
+
+    visitsEl.textContent = String(result.count).padStart(6, "0");
+    visitsEl.title = "全站累计访问次数";
+  } catch (error) {
+    visitsEl.textContent = "------";
+    visitsEl.title = "全站访问计数等待 Vercel KV 配置";
+  }
+}
+syncGlobalVisits();
 
 function getFiltered() {
   const query = state.query.trim().replace(/^\$/, "").toLowerCase();
