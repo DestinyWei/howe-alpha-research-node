@@ -2592,7 +2592,7 @@ window.RESEARCH_CONTENT = {
   "38155f3086b38065a9d9f4e115c70850": [
     "$O @o1_exchange",
     "CA(Base)：0x182fa643e5f29d5eca75e7b9cf9336a3fe4620b2",
-    "alpha 开盘时间未知，已经上了 cb，空投领取时间未知",
+    "alpha 22:00 开盘，已经上了 cb，空投领取时间未知",
     "代币初始总量 1B，初始流通 16%",
     "3% 社区，3% 生态，4% 国库，6% 流动性",
     "基本面是链上交易终端 + Meta DEX Aggregator + AI/量化交易工具",
