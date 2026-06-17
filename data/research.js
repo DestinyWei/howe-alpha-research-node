@@ -112,6 +112,7 @@ const RAW_RESEARCH = [
   [2026, "5.25 $SLX", "36b55f3086b38099a709e57b8cb44310"],
   [2026, "5.26 $CTR", "36c55f3086b38000a48fc979a9f0dac8"],
   [2026, "6.12 $VEERA", "37d55f3086b38038a4d3f832504732e0"],
+  [2026, "6.17 $O", "38155f3086b38065a9d9f4e115c70850"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -228,6 +229,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "36b55f3086b38099a709e57b8cb44310": ["BSC", "Sol"],
   "36c55f3086b38000a48fc979a9f0dac8": ["Base"],
   "37d55f3086b38038a4d3f832504732e0": ["BSC", "Base"],
+  "38155f3086b38065a9d9f4e115c70850": ["Base"],
 };
 
 const FEATURED_NOTES = {
@@ -242,6 +244,10 @@ const FEATURED_NOTES = {
   VEERA: {
     project: "Veera",
     summary: "链上数字银行项目；关注未公布 Tokenomics、印度团队背景、融资结构与开盘风险。",
+  },
+  O: {
+    project: "o1.exchange",
+    summary: "链上交易终端与 Meta DEX Aggregator；关注 Base CA、融资成本、单字母 ticker 与开盘策略。",
   },
 };
 
