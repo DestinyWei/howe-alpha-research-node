@@ -1,6 +1,6 @@
 # HOWE Alpha Research Node
 
-纯静态首版研究档案站，已收录 Notion 中 114 篇「Alpha 新币分析系列」记录。
+纯静态首版研究档案站，已收录 Notion 中 115 篇「Alpha 新币分析系列」记录。
 
 ## 本地预览
 

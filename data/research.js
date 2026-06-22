@@ -113,6 +113,7 @@ const RAW_RESEARCH = [
   [2026, "5.26 $CTR", "36c55f3086b38000a48fc979a9f0dac8"],
   [2026, "6.12 $VEERA", "37d55f3086b38038a4d3f832504732e0"],
   [2026, "6.17 $O", "38155f3086b38065a9d9f4e115c70850"],
+  [2026, "6.22 $ARX", "38755f3086b380258e08c6e6ed42707c"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -230,6 +231,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "36c55f3086b38000a48fc979a9f0dac8": ["Base"],
   "37d55f3086b38038a4d3f832504732e0": ["BSC", "Base"],
   "38155f3086b38065a9d9f4e115c70850": ["Base"],
+  "38755f3086b380258e08c6e6ed42707c": ["BSC", "Sol"],
 };
 
 const FEATURED_NOTES = {
@@ -248,6 +250,10 @@ const FEATURED_NOTES = {
   O: {
     project: "o1.exchange",
     summary: "链上交易终端与 Meta DEX Aggregator；关注 Base CA、融资成本、单字母 ticker 与开盘策略。",
+  },
+  ARX: {
+    project: "Arcium",
+    summary: "并行化隐私计算网络；关注 BSC/Sol 双链 CA、VC 与公募成本、欧洲主体和开盘池子价。",
   },
 };
 
