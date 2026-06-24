@@ -2631,7 +2631,7 @@ window.RESEARCH_CONTENT = {
     "CA(ETH)：0x230f1E241C621d5af670Dad83ebCdd18971E2995",
     "alpha 20:00 开盘，空投领取时间未知",
     "代币初始总量 1B，初始流通约 14.15%（数据来源 CMC）",
-    "没有披露 Tokenomics",
+    "1% 公募，4.85% Listing，4.8% 流动性，4.05% 生态/空投（实际流通与 CMC 有点偏差）",
     "基本面是面向“可信 AI 推理”的轻量级 Layer 1，主打隐私、安全、ZKML 与链上 AI inference",
     "欧美团队，没有太多 Crypto Native 背景，两位联创都是传统金融背景",
     "融资信息未知，但这项目方投资了之前另一个 Alpha 项目 Everlyn（$LYN，开盘表现很割）",
