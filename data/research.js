@@ -114,6 +114,7 @@ const RAW_RESEARCH = [
   [2026, "6.12 $VEERA", "37d55f3086b38038a4d3f832504732e0"],
   [2026, "6.17 $O", "38155f3086b38065a9d9f4e115c70850"],
   [2026, "6.22 $ARX", "38755f3086b380258e08c6e6ed42707c"],
+  [2026, "6.24 $NES", "local-20260624-nes"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -232,6 +233,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "37d55f3086b38038a4d3f832504732e0": ["BSC", "Base"],
   "38155f3086b38065a9d9f4e115c70850": ["Base"],
   "38755f3086b380258e08c6e6ed42707c": ["BSC", "Sol"],
+  "local-20260624-nes": ["BSC", "ETH"],
 };
 
 const FEATURED_NOTES = {
@@ -254,6 +256,10 @@ const FEATURED_NOTES = {
   ARX: {
     project: "Arcium",
     summary: "并行化隐私计算网络；关注 BSC/Sol 双链 CA、VC 与公募成本、欧洲主体和开盘池子价。",
+  },
+  NES: {
+    project: "Nesa",
+    summary: "可信 AI 推理轻量级 L1；关注未披露 Tokenomics、未知融资、BSC/ETH 双链 CA 与开盘风险。",
   },
 };
 
