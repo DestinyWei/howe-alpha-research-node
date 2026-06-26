@@ -115,6 +115,7 @@ const RAW_RESEARCH = [
   [2026, "6.17 $O", "38155f3086b38065a9d9f4e115c70850"],
   [2026, "6.22 $ARX", "38755f3086b380258e08c6e6ed42707c"],
   [2026, "6.24 $NES", "local-20260624-nes"],
+  [2026, "6.26 $CAP", "local-20260626-cap"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -234,6 +235,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "38155f3086b38065a9d9f4e115c70850": ["Base"],
   "38755f3086b380258e08c6e6ed42707c": ["BSC", "Sol"],
   "local-20260624-nes": ["BSC", "ETH"],
+  "local-20260626-cap": ["BSC", "ETH"],
 };
 
 const FEATURED_NOTES = {
@@ -260,6 +262,10 @@ const FEATURED_NOTES = {
   NES: {
     project: "Nesa",
     summary: "可信 AI 推理轻量级 L1；关注未披露 Tokenomics、未知融资、BSC/ETH 双链 CA 与开盘风险。",
+  },
+  CAP: {
+    project: "Cap",
+    summary: "MegaETH 孵化的以太坊信贷协议；关注 ICO 抛压、VC/公募成本、Cake IDO 与开盘狙击情况。",
   },
 };
 
