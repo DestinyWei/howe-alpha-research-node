@@ -114,8 +114,8 @@ const RAW_RESEARCH = [
   [2026, "6.12 $VEERA", "37d55f3086b38038a4d3f832504732e0"],
   [2026, "6.17 $O", "38155f3086b38065a9d9f4e115c70850"],
   [2026, "6.22 $ARX", "38755f3086b380258e08c6e6ed42707c"],
-  [2026, "6.24 $NES", "local-20260624-nes"],
-  [2026, "6.26 $CAP", "local-20260626-cap"],
+  [2026, "6.24 $NES", "38955f3086b380df817bda6346bc1282"],
+  [2026, "6.26 $CAP", "38b55f3086b38017a815e420d89ab613"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -234,8 +234,8 @@ const PAGE_CHAIN_OVERRIDES = {
   "37d55f3086b38038a4d3f832504732e0": ["BSC", "Base"],
   "38155f3086b38065a9d9f4e115c70850": ["Base"],
   "38755f3086b380258e08c6e6ed42707c": ["BSC", "Sol"],
-  "local-20260624-nes": ["BSC", "ETH"],
-  "local-20260626-cap": ["BSC", "ETH"],
+  "38955f3086b380df817bda6346bc1282": ["BSC", "ETH"],
+  "38b55f3086b38017a815e420d89ab613": ["BSC", "ETH"],
 };
 
 const FEATURED_NOTES = {

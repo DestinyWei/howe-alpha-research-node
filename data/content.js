@@ -2625,7 +2625,7 @@ window.RESEARCH_CONTENT = {
     "依旧 DYOR 哈",
     "#Alpha新币分析 #Arcium"
   ],
-  "local-20260624-nes": [
+  "38955f3086b380df817bda6346bc1282": [
     "$NES @nesaorg",
     "CA(BSC)：0x3131f6B80C26936aB03F7d9D29Eb4Ddf36AC3FB5",
     "CA(ETH)：0x230f1E241C621d5af670Dad83ebCdd18971E2995",
@@ -2642,7 +2642,7 @@ window.RESEARCH_CONTENT = {
     "依旧 DYOR 哈",
     "#Alpha新币分析 #Nesa"
   ],
-  "local-20260626-cap": [
+  "38b55f3086b38017a815e420d89ab613": [
     "$CAP @CapApp",
     "CA(BSC)：0x99991c6AAbba5a096f24f250b73580F5179b9999",
     "CA(ETH)：0x99991c6AAbba5a096f24f250b73580F5179b9999",
