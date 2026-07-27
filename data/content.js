@@ -2661,7 +2661,7 @@ window.RESEARCH_CONTENT = {
     "依旧 DYOR 哈",
     "#Alpha新币分析 #cap"
   ],
-  "local-20260727-aeon": [
+  "3aa55f3086b380c082eaf4dfa264a04f": [
     "$AEON @AEON_Community",
     "CA(BSC)：0x277aDD739c6E0477616948357AF9E79Fe1Ec9B80",
     "alpha 18:00 开盘，空投领取时间未知",
