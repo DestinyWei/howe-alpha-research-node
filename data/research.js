@@ -116,6 +116,7 @@ const RAW_RESEARCH = [
   [2026, "6.22 $ARX", "38755f3086b380258e08c6e6ed42707c"],
   [2026, "6.24 $NES", "38955f3086b380df817bda6346bc1282"],
   [2026, "6.26 $CAP", "38b55f3086b38017a815e420d89ab613"],
+  [2026, "7.27 $AEON", "local-20260727-aeon"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -236,6 +237,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "38755f3086b380258e08c6e6ed42707c": ["BSC", "Sol"],
   "38955f3086b380df817bda6346bc1282": ["BSC", "ETH"],
   "38b55f3086b38017a815e420d89ab613": ["BSC", "ETH"],
+  "local-20260727-aeon": ["BSC"],
 };
 
 const FEATURED_NOTES = {
@@ -266,6 +268,10 @@ const FEATURED_NOTES = {
   CAP: {
     project: "Cap",
     summary: "MegaETH 孵化的以太坊信贷协议；关注 ICO 抛压、VC/公募成本、Cake IDO 与开盘狙击情况。",
+  },
+  AEON: {
+    project: "AEON",
+    summary: "面向 Agentic Economy 的结算层；关注 AI Agent 支付叙事、Yzi/IDG 背书、融资成本与注意力回流。",
   },
 };
 
