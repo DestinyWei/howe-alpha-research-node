@@ -117,6 +117,7 @@ const RAW_RESEARCH = [
   [2026, "6.24 $NES", "38955f3086b380df817bda6346bc1282"],
   [2026, "6.26 $CAP", "38b55f3086b38017a815e420d89ab613"],
   [2026, "7.27 $AEON", "3aa55f3086b380c082eaf4dfa264a04f"],
+  [2026, "7.30 $GRVT", "3ad55f3086b380c3ba9ff8b69b35f4ab"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -238,6 +239,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "38955f3086b380df817bda6346bc1282": ["BSC", "ETH"],
   "38b55f3086b38017a815e420d89ab613": ["BSC", "ETH"],
   "3aa55f3086b380c082eaf4dfa264a04f": ["BSC"],
+  "3ad55f3086b380c3ba9ff8b69b35f4ab": ["BSC", "ETH"],
 };
 
 const FEATURED_NOTES = {
@@ -272,6 +274,10 @@ const FEATURED_NOTES = {
   AEON: {
     project: "AEON",
     summary: "面向 Agentic Economy 的结算层；关注 AI Agent 支付叙事、Yzi/IDG 背书、融资成本与注意力回流。",
+  },
+  GRVT: {
+    project: "GRVT",
+    summary: "PerpDEX 项目；关注 BSC/ETH 双链 CA、空投解锁抛压、池子深度、TVL 回落与合约/韩所预期。",
   },
 };
 
