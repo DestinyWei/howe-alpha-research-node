@@ -118,6 +118,7 @@ const RAW_RESEARCH = [
   [2026, "6.26 $CAP", "38b55f3086b38017a815e420d89ab613"],
   [2026, "7.27 $AEON", "3aa55f3086b380c082eaf4dfa264a04f"],
   [2026, "7.30 $GRVT", "3ad55f3086b380c3ba9ff8b69b35f4ab"],
+  [2026, "8.10 $DOS", "3b855f3086b3808d86aad62f4b4f805c"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -240,6 +241,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "38b55f3086b38017a815e420d89ab613": ["BSC", "ETH"],
   "3aa55f3086b380c082eaf4dfa264a04f": ["BSC"],
   "3ad55f3086b380c3ba9ff8b69b35f4ab": ["BSC", "ETH"],
+  "3b855f3086b3808d86aad62f4b4f805c": ["BSC", "ETH"],
 };
 
 const FEATURED_NOTES = {
@@ -278,6 +280,10 @@ const FEATURED_NOTES = {
   GRVT: {
     project: "GRVT",
     summary: "PerpDEX 项目；关注 BSC/ETH 双链 CA、空投解锁抛压、池子深度、TVL 回落与合约/韩所预期。",
+  },
+  DOS: {
+    project: "dappOS",
+    summary: "Web3 AI 操作系统与意图交易执行项目；关注 BSC/ETH 双链 CA、低 BSC 流通、融资估值、声量投放与空投抛压。",
   },
 };
 
