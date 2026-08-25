@@ -119,6 +119,7 @@ const RAW_RESEARCH = [
   [2026, "7.27 $AEON", "3aa55f3086b380c082eaf4dfa264a04f"],
   [2026, "7.30 $GRVT", "3ad55f3086b380c3ba9ff8b69b35f4ab"],
   [2026, "8.10 $DOS", "3b855f3086b3808d86aad62f4b4f805c"],
+  [2026, "8.25 $TMX", "3c755f3086b38059adcfde09c0ea86e6"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -242,6 +243,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "3aa55f3086b380c082eaf4dfa264a04f": ["BSC"],
   "3ad55f3086b380c3ba9ff8b69b35f4ab": ["BSC", "ETH"],
   "3b855f3086b3808d86aad62f4b4f805c": ["BSC", "ETH"],
+  "3c755f3086b38059adcfde09c0ea86e6": ["BSC", "ETH"],
 };
 
 const FEATURED_NOTES = {
@@ -284,6 +286,10 @@ const FEATURED_NOTES = {
   DOS: {
     project: "dappOS",
     summary: "Web3 AI 操作系统与意图交易执行项目；关注 BSC/ETH 双链 CA、低 BSC 流通、融资估值、声量投放与空投抛压。",
+  },
+  TMX: {
+    project: "TermMax",
+    summary: "固定利率借贷 / 固定期限 DeFi 协议；关注 BSC/ETH 双链 CA、低 VC 成本、TVL 宣发口径与可玩性风险。",
   },
 };
 
