@@ -120,6 +120,7 @@ const RAW_RESEARCH = [
   [2026, "7.30 $GRVT", "3ad55f3086b380c3ba9ff8b69b35f4ab"],
   [2026, "8.10 $DOS", "3b855f3086b3808d86aad62f4b4f805c"],
   [2026, "8.25 $TMX", "3c755f3086b38059adcfde09c0ea86e6"],
+  [2026, "8.26 $DEBIT", "3c755f3086b38029aeb1fc5ae19e07a3"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -244,6 +245,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "3ad55f3086b380c3ba9ff8b69b35f4ab": ["BSC", "ETH"],
   "3b855f3086b3808d86aad62f4b4f805c": ["BSC", "ETH"],
   "3c755f3086b38059adcfde09c0ea86e6": ["BSC", "ETH"],
+  "3c755f3086b38029aeb1fc5ae19e07a3": ["BSC"],
 };
 
 const FEATURED_NOTES = {
@@ -290,6 +292,10 @@ const FEATURED_NOTES = {
   TMX: {
     project: "TermMax",
     summary: "固定利率借贷 / 固定期限 DeFi 协议；关注 BSC/ETH 双链 CA、低 VC 成本、TVL 宣发口径与可玩性风险。",
+  },
+  DEBIT: {
+    project: "Teller",
+    summary: "结合 AI Agent、传统信贷入口与链上金融操作的 Lending / Onchain Finance 平台；关注 BSC CA、古早融资、VC 背景与开盘可玩性。",
   },
 };
 
