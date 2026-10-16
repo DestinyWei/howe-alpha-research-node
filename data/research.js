@@ -121,6 +121,7 @@ const RAW_RESEARCH = [
   [2026, "8.10 $DOS", "3b855f3086b3808d86aad62f4b4f805c"],
   [2026, "8.25 $TMX", "3c755f3086b38059adcfde09c0ea86e6"],
   [2026, "8.26 $DEBIT", "3c755f3086b38029aeb1fc5ae19e07a3"],
+  [2026, "10.16 $DNA", "3fb55f3086b380248691f3ec302ae579"],
 ];
 
 const PAGE_CHAIN_OVERRIDES = {
@@ -246,6 +247,7 @@ const PAGE_CHAIN_OVERRIDES = {
   "3b855f3086b3808d86aad62f4b4f805c": ["BSC", "ETH"],
   "3c755f3086b38059adcfde09c0ea86e6": ["BSC", "ETH"],
   "3c755f3086b38029aeb1fc5ae19e07a3": ["BSC"],
+  "3fb55f3086b380248691f3ec302ae579": ["BSC"],
 };
 
 const FEATURED_NOTES = {
@@ -296,6 +298,10 @@ const FEATURED_NOTES = {
   DEBIT: {
     project: "Teller",
     summary: "结合 AI Agent、传统信贷入口与链上金融操作的 Lending / Onchain Finance 平台；关注 BSC CA、古早融资、VC 背景与开盘可玩性。",
+  },
+  DNA: {
+    project: "NeoSoul AI",
+    summary: "AI Agent 经济基础设施与交易执行工具；关注 BSC CA、13% 初始流通、融资成本、战略合作背景与 MM 预期。",
   },
 };
 
